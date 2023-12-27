@@ -1,4 +1,4 @@
-name: Create AWS EKS cluster
+name: Delete AWS EKS cluster
 
 on: workflow_dispatch
 
@@ -28,5 +28,5 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
 
-      - name: Create cluster
-        run: eksctl create cluster -f k8s_cluster.yml
+      - name: Delete cluster
+        run: eksctl delete cluster -f k8s_cluster.yml
