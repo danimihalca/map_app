@@ -1,0 +1,17 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: MapApp
+  region: eu-central-1
+
+nodeGroups:
+  - name: ng
+    instanceType: t2.micro
+    desiredCapacity: 2
+    volumeSize: 10
+
+
+# To apply incoming TCP 80 rule:
+# set SG_ID=`aws ec2 describe-security-groups --filters Name=tag:Name,Values=eksctl-<CLUSTER_NAME>-nodegroup-<NODEGROUP_NAME>/SG --query SecurityGroups[0].GroupId`
+# aws ec2 authorize-security-group-ingress --group-id $SG_ID --protocol tcp --port 80 --cidr 0.0.0.0/0
