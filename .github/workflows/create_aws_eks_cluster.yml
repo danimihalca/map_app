@@ -29,4 +29,4 @@ jobs:
           aws-region: eu-central-1
 
       - name: Create cluster
-        run: eksctl create cluster -f k8s_cluster.yml --dry-run
+        run: eksctl create cluster -f k8s_cluster.yml
