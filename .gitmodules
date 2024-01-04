@@ -1,0 +1,6 @@
+[submodule "map_app_frontend"]
+	path = map_app_frontend
+	url = ../map_app_frontend
+[submodule "map_app_search_service"]
+	path = services/map_app_search_service
+	url = ../map_app_search_service
