@@ -27,8 +27,6 @@ services:
       target: runner
     container_name: map_app_search_service
     hostname: search-service
-    environment:
-      - MAPBOX_TOKEN=/run/secrets/mapbox_token
     ports:
       - 12345:12345
     depends_on:
