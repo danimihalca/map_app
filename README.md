@@ -41,7 +41,7 @@ docker build --build-arg="BASE_ENV=<SEARCH_SERVICE_BASE_ENV_IMG>" \
     --target runner -t <SEARCH_SERVICE_IMG> .
 
 cd $ROOT/map_app_frontend
-docker build --target runner -t <FROTEND_IMG> .
+docker build --target runner -t <FRONTEND_IMG> .
 ```
 
 * Set Mapbox API token as secret
@@ -67,7 +67,7 @@ kubectl patch deployment search-deploy -p '{"spec": {"template": {"spec":{"conta
 * Generate frontend manifest with image name from template (or manual edit) and apply
 
 ```
-cat map_app_frontend/k8s_service.tmp.yml | ECR_REGISTRY=<ECR_REGISTRY> ECR_REPOSITORY=<ECR_REPOSITORY> IMAGE_TAG=<IMAGE_TAG> envsubst > k8s_service_frontend.yml
+cat map_app_frontend/k8s_service.tmp.yml | IMAGE_NAME=<FRONTEND_IMG> envsubst > k8s_service_frontend.yml
 kubectl apply -f k8s_service_frontend.yml
 ```
 
