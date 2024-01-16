@@ -4,3 +4,6 @@
 [submodule "map_app_search_service"]
 	path = services/map_app_search_service
 	url = ../map_app_search_service
+[submodule "services/map_app_navigation_service"]
+	path = services/map_app_navigation_service
+	url = ../map_app_navigation_service
