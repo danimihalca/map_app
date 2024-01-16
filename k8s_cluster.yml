@@ -8,7 +8,7 @@ metadata:
 nodeGroups:
   - name: ng
     instanceType: t2.micro
-    desiredCapacity: 2
+    desiredCapacity: 3
     volumeSize: 10
 
 
