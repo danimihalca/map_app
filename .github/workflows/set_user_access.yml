@@ -33,3 +33,4 @@ jobs:
           eksctl create iamidentitymapping --cluster MapApp --region eu-central-1 --arn arn:aws:iam::987554314105:user/debian-cli --group system:masters --no-duplicate-arns --username debian-cli
           eksctl create iamidentitymapping --cluster MapApp --region eu-central-1 --arn arn:aws:iam::987554314105:user/github-map-frotend --group system:masters --no-duplicate-arns --username github-map-frotend
           eksctl create iamidentitymapping --cluster MapApp --region eu-central-1 --arn arn:aws:iam::987554314105:user/github-search-service --group system:masters --no-duplicate-arns --username github-search-service
+          eksctl create iamidentitymapping --cluster MapApp --region eu-central-1 --arn arn:aws:iam::987554314105:user/github-map-navigation --group system:masters --no-duplicate-arns --username github-map-navigation
