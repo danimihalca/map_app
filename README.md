@@ -1,5 +1,7 @@
 # MapApp main repository
 
+![](demo.gif)
+
 ## Build and run using Docker Compose
 
 * Initialize all submodules:
