@@ -90,7 +90,7 @@ kubectl apply -f k8s_service_frontend.yml
 * Optional for images built locally: patch manifest to disable pull
 
 ```
-kubectl patch deployment frotend-deploy -p '{"spec": {"template": {"spec":{"containers":[{"name": "frontend-cont", "imagePullPolicy":"Never"}]}}}}'
+kubectl patch deployment frontend-deploy -p '{"spec": {"template": {"spec":{"containers":[{"name": "frontend-cont", "imagePullPolicy":"Never"}]}}}}'
 ```
 
 * Expose frontend service from minikube
