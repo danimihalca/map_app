@@ -29,4 +29,4 @@ jobs:
           aws-region: eu-central-1
 
       - name: Delete cluster
-        run: eksctl delete cluster -f k8s_cluster.yml
+        run: eksctl delete cluster -f k8s_cluster.yml --disable-nodegroup-eviction
