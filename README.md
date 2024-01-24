@@ -16,7 +16,7 @@ Components:
         - [Github README](https://github.com/danimihalca/map_app_navigation_service/blob/main/README.md)
 
 ## Development project board
- [Board](ttps://github.com/users/danimihalca/projects/1)
+ [Board](https://github.com/users/danimihalca/projects/1)
 
 ## Demo on AWS
 ![](demo.gif)
