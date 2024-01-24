@@ -1,8 +1,26 @@
 # MapApp main repository
 
+## Description
+Basic map web application for displaying a map, performing a search and calculating a route from an origin point to a search result, built on top of Mapbox's services.
+
+Components:
+- [frontend](map_app_frontend/README.md)
+- services:
+    - [search service](services/map_app_search_service/README.md)
+    - [navigation service](services/map_app_navigation_service/README.md)
+
+## Development project board
+ [Board](ttps://github.com/users/danimihalca/projects/1)
+
+## Demo on AWS
 ![](demo.gif)
 
-## Build and run using Docker Compose
+> [!NOTE]
+> The application isn't always deployed, nor will it have the URL shown in the demo.
+
+
+## Build
+### Prerequisites
 
 * Initialize all submodules:
 
@@ -11,15 +29,20 @@ git submodule update --init --recursive
 ```
 
 * Set Mapbox API token in `mapbox_token.txt`
+
+
+### Build and run using Docker Compose
+
+
 * Run Docker Compose:
 
 ```
 docker compose up
 ```
 
-## Run k8s cluster locally using minikube
+### Build & run as a local k8s cluster via minikube
 
-* Start minikube
+* Start minikube:
 
 ```
 minikube start --vm-driver=kvm2
@@ -33,23 +56,27 @@ eval $(minikube -p minikube docker-env)
 * Build docker images
 
 ```
+# Base enironment for search service
 cd $ROOT/services/map_app_search_service/map_app_search_service_base
 docker build --target=map-app-search-service-dep-build \
     `./docker_build/source-build-args.sh docker_build/args/release.args` \
     -t <SEARCH_SERVICE_BASE_ENV_IMG> .
 
+# Search service
 cd $ROOT/services/map_app_search_service
 docker build --build-arg="BASE_ENV=<SEARCH_SERVICE_BASE_ENV_IMG>" \
     --target runner -t <SEARCH_SERVICE_IMG> .
 
+# Navigation service
 cd $ROOT/services/map_app_navigation_service
 docker build --target runner -t <NAVIGATION_SERVICE_IMG> .
 
+# Frontend
 cd $ROOT/map_app_frontend
 docker build --target runner -t <FRONTEND_IMG> .
 ```
 
-* Set Mapbox API token as secret
+* Set Mapbox API token as secret from file
 
 ```
 kubectl delete secret mapbox-access --ignore-not-found
@@ -95,7 +122,7 @@ kubectl apply -f k8s_service_frontend.yml
 kubectl patch deployment frontend-deploy -p '{"spec": {"template": {"spec":{"containers":[{"name": "frontend-cont", "imagePullPolicy":"Never"}]}}}}'
 ```
 
-* Expose frontend service from minikube
+* Expose frontend service from minikube and access the frontend via the provided address:
 
 ```
 minikube service frontend-service
