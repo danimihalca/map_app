@@ -4,10 +4,16 @@
 Basic map web application for displaying a map, performing a search and calculating a route from an origin point to a search result, built on top of Mapbox's services.
 
 Components:
-- [frontend](map_app_frontend/README.md)
+- frontend:
+    - [local README](map_app_frontend/README.md)
+    - [Github README](https://github.com/danimihalca/map_app_frontend/blob/develop/README.md)
 - services:
-    - [search service](services/map_app_search_service/README.md)
-    - [navigation service](services/map_app_navigation_service/README.md)
+    - search service:
+        - [local README](services/map_app_search_service/README.md)
+        - [Github README](https://github.com/danimihalca/map_app_search_service/blob/main/README.md)
+    - navigation service:
+        - [local README](services/map_app_navigation_service/README.md)
+        - [Github README](https://github.com/danimihalca/map_app_navigation_service/blob/main/README.md)
 
 ## Development project board
  [Board](ttps://github.com/users/danimihalca/projects/1)
