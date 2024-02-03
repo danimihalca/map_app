@@ -56,4 +56,4 @@ jobs:
       - name: Delete cluster
         uses: azure/CLI@v1.0.9
         with:
-          inline_script: az aks delete -g $RESOURCE_GROUP_NAME --name $AKS_NAME -y
+          inlineScript: az aks delete -g $RESOURCE_GROUP_NAME --name $AKS_NAME -y
