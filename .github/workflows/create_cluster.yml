@@ -41,7 +41,7 @@ jobs:
 
   azure_run:
     runs-on: ubuntu-latest
-    if: ${{ inputs.target_cloud == "AWS" }}
+    if: ${{ inputs.target_cloud == "Azure" }}
     env:
       - AKS_NAME: MapAppAks
       - RESOURCE_GROUP_NAME: rg_MapApp
