@@ -1,4 +1,4 @@
-name: Set user access
+name: Set AWS CI/CD user access
 
 on: workflow_dispatch
 
