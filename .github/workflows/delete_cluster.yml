@@ -1,10 +1,19 @@
 name: Delete AWS EKS cluster
 
-on: workflow_dispatch
+on:
+  workflow_dispatch
+    inputs:
+      target_cloud:
+        type: choice
+        description: "Cloud"
+        options:
+        - AWS
+        - Azure
 
 jobs:
-  build:
+  aws_run:
     runs-on: ubuntu-latest
+    if : ${{ inputs.target_cloud == "AWS" }}
 
     steps:
       - name: Check out code
@@ -30,3 +39,18 @@ jobs:
 
       - name: Delete cluster
         run: eksctl delete cluster -f k8s_cluster.yml --disable-nodegroup-eviction
+
+  azure_run:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.target_cloud == "AWS" }}
+    env:
+      - AKS_NAME: MapAppAks
+      - RESOURCE_GROUP_NAME: rg_MapApp
+    steps:
+      - name: Login via Azure CLI
+        uses: azure/login@
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Delete cluster
+        run: az aks delete -g $RESOURCE_GROUP_NAME --name $AKS_NAME -y

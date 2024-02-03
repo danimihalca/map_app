@@ -1,10 +1,18 @@
-name: Create AWS EKS cluster
+name: Create EKS cluster
 
-on: workflow_dispatch
-
+on:
+  workflow_dispatch
+    inputs:
+      target_cloud:
+        type: choice
+        description: "Cloud"
+        options:
+        - AWS
+        - Azure
 jobs:
-  build:
+  aws_run:
     runs-on: ubuntu-latest
+    if : ${{ inputs.target_cloud == "AWS" }}
 
     steps:
       - name: Check out code
@@ -30,3 +38,24 @@ jobs:
 
       - name: Create cluster
         run: eksctl create cluster -f k8s_cluster.yml
+
+  azure_run:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.target_cloud == "AWS" }}
+    env:
+      - AKS_NAME: MapAppAks
+      - RESOURCE_GROUP_NAME: rg_MapApp
+      - REGION_NAME: germanywestcentral
+      - ACR_NAME: MapAppRegistry
+    steps:
+      - name: Login via Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Create cluster
+        run: az aks create -n $AKS_NAME -g $RESOURCE_GROUP_NAME -l $REGION_NAME --node-count 1
+
+      - name: Attach container registry to cluster
+        run: az aks update -n $AKS_NAME -g $RESOURCE_GROUP_NAME --attach-acr $ACR_NAME
+
