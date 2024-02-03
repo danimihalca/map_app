@@ -1,7 +1,7 @@
-name: Create EKS cluster
+name: Create cluster
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
     inputs:
       target_cloud:
         type: choice

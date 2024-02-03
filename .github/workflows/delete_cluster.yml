@@ -1,7 +1,7 @@
-name: Delete AWS EKS cluster
+name: Delete cluster
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
     inputs:
       target_cloud:
         type: choice
