@@ -57,10 +57,5 @@ jobs:
       - name: Create cluster
         uses: azure/CLI@v1.0.9
         with:
-          inlineScript: az aks create -n $AKS_NAME -g $RESOURCE_GROUP_NAME -l $REGION_NAME --node-count 1 --generate-ssh-keys
-
-      - name: Attach container registry to cluster
-        uses: azure/CLI@v1.0.9
-        with:
-          inline_script: az aks update -n $AKS_NAME -g $RESOURCE_GROUP_NAME --attach-acr $ACR_NAME
+          inlineScript: az aks create -n $AKS_NAME -g $RESOURCE_GROUP_NAME -l $REGION_NAME --node-count 1 --generate-ssh-keys --attach-acr $ACR_NAME
 
