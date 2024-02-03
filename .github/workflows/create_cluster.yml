@@ -55,8 +55,12 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Create cluster
-        run: az aks create -n $AKS_NAME -g $RESOURCE_GROUP_NAME -l $REGION_NAME --node-count 1
+        uses: azure/CLI@v1.0.9
+        with:
+          inlineScript: az aks create -n $AKS_NAME -g $RESOURCE_GROUP_NAME -l $REGION_NAME --node-count 1
 
       - name: Attach container registry to cluster
-        run: az aks update -n $AKS_NAME -g $RESOURCE_GROUP_NAME --attach-acr $ACR_NAME
+        uses: azure/CLI@v1.0.9
+        with:
+          inline_script: az aks update -n $AKS_NAME -g $RESOURCE_GROUP_NAME --attach-acr $ACR_NAME
 
