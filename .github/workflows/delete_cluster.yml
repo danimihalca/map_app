@@ -49,7 +49,7 @@ jobs:
       RESOURCE_GROUP_NAME: rg_MapApp
     steps:
       - name: Login via Azure CLI
-        uses: azure/login@1
+        uses: azure/actions/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
