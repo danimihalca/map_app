@@ -1,7 +1,7 @@
 # MapApp main repository
 
 ## Description
-Basic map web application for displaying a map, performing a search and calculating a route from an origin point to a search result, built on top of Mapbox's services.
+Basic map web application for displaying a map, performing a search and calculating a route from an origin point to a search result, built on top of Mapbox's services, deployable on AWS or Azure.
 
 Components:
 - frontend:
