@@ -57,5 +57,7 @@ jobs:
       - name: Create cluster
         uses: azure/CLI@v1.0.9
         with:
-          inlineScript: az aks create -n $AKS_NAME -g $RESOURCE_GROUP_NAME -l $REGION_NAME --node-count 1 --generate-ssh-keys --attach-acr $ACR_NAME
+          inlineScript: |
+            az acr create --resource-group $RESOURCE_GROUP_NAME --name $ACR_NAME --sku Basic
+            az aks create -n $AKS_NAME -g $RESOURCE_GROUP_NAME -l $REGION_NAME --node-count 1 --generate-ssh-keys --attach-acr $ACR_NAME
 
