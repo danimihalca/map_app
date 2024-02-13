@@ -58,5 +58,5 @@ jobs:
         uses: azure/CLI@v1.0.9
         with:
           inlineScript: |
-            #az aks delete -g $RESOURCE_GROUP_NAME --name $AKS_NAME -y
-            az acr delete -g $RESOURCE_GROUP_NAME --name $ACR_NAME -y
+            az aks delete -g $RESOURCE_GROUP_NAME --name $AKS_NAME -y
+            #az acr delete -g $RESOURCE_GROUP_NAME --name $ACR_NAME -y
