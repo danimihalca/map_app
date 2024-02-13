@@ -47,7 +47,7 @@ jobs:
       AKS_NAME: MapAppAks
       RESOURCE_GROUP_NAME: rg_MapApp
       REGION_NAME: germanywestcentral
-      ACR_NAME: MapAppRegistry
+      ACR_NAME: mapappregistry
     steps:
       - name: Login via Azure CLI
         uses: azure/login@v1

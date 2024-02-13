@@ -47,6 +47,7 @@ jobs:
     env:
       AKS_NAME: MapAppAks
       RESOURCE_GROUP_NAME: rg_MapApp
+      ACR_NAME: mapappregistry
     steps:
       - name: Login via Azure CLI
         uses: azure/actions/login@v1
@@ -56,4 +57,6 @@ jobs:
       - name: Delete cluster
         uses: azure/CLI@v1.0.9
         with:
-          inlineScript: az aks delete -g $RESOURCE_GROUP_NAME --name $AKS_NAME -y
+          inlineScript: |
+            az aks delete -g $RESOURCE_GROUP_NAME --name $AKS_NAME -y
+            az acr delete -g $RESOURCE_GROUP_NAME --name $ACR_NAME -y
